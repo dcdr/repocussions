@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: one-deployment
+  labels:
+    app: one
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: one
+  template:
+    metadata:
+      labels:
+        app: one
+    spec:
+      containers:
+      - name: one
+        image: 358199490937.dkr.ecr.us-west-2.amazonaws.com/one:1
+        ports:
+        - name: nodejs-port
+          containerPort: 80
+      imagePullSecrets:
+      - name: ecr-password

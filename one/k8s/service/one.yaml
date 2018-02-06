@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-02-06T16:11:00Z
+  labels:
+    app: one
+  name: one-service
+  namespace: default
+  resourceVersion: "8829"
+  selfLink: /api/v1/namespaces/default/services/one-service
+  uid: 52a58b40-0b58-11e8-a4db-080027aecde4
+spec:
+  clusterIP: 10.109.218.251
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 32033
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: one
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
