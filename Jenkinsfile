@@ -3,7 +3,17 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'dotnet --version' 
+                bat 'dotnet build' 
+            }
+        }
+        stage('test') {
+            steps {
+                bat 'dotnet test one.test'
+            }
+        }
+        stage('containerize') {
+            steps {
+                bat 'docker build -t one:{BUILD_NUMBER} one'
             }
         }
     }
