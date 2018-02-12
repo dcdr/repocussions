@@ -1,18 +1,21 @@
 node {
     def app
 
-    agent { 
-        docker 'microsoft/aspnetcore-build:2.0' 
-    }
     stages {
 
         stage('build') {
+            agent { 
+                docker 'microsoft/aspnetcore-build:2.0' 
+            }
             steps {
 //                bat 'dotnet build' 
                sh 'dotnet build' 
             }
         }
         stage('test') {
+            agent { 
+                docker 'microsoft/aspnetcore-build:2.0' 
+            }
             steps {
 //                bat 'dotnet test one.test'
                sh 'dotnet test one.test'
