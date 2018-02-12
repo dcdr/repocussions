@@ -1,9 +1,10 @@
-pipeline {
+node {
+    def app
+
     agent { 
         docker 'microsoft/aspnetcore-build:2.0' 
     }
     stages {
-//        def app
 
         stage('build') {
             steps {
@@ -21,8 +22,8 @@ pipeline {
             steps {
 //                bat 'docker build -t one:{BUILD_NUMBER} one'
                // sh 'docker build -t one:{BUILD_NUMBER} one'
-                //app = docker.build("one")
-                sh 'echo "here"'
+                app = docker.build("one")
+                //sh 'echo "here"'
             }
         }
     }
