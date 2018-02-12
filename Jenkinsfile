@@ -1,6 +1,10 @@
 pipeline {
-    agent { docker 'microsoft/aspnetcore-build:2.0' }
+    agent { 
+        docker 'microsoft/aspnetcore-build:2.0' 
+    }
     stages {
+        def app
+
         stage('build') {
             steps {
 //                bat 'dotnet build' 
@@ -15,8 +19,10 @@ pipeline {
         }
         stage('containerize') {
             steps {
-//                bat 'docker build -t one:{BUILD_NUMBER} one'
-               sh 'docker build -t one:{BUILD_NUMBER} one'
+                /* This builds the actual image; synonymous to
+                * docker build on the command line */
+
+                app = docker.build("one")
             }
         }
     }
