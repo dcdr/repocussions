@@ -3,7 +3,7 @@ pipeline {
         docker 'microsoft/aspnetcore-build:2.0' 
     }
     stages {
-        def app
+//        def app
 
         stage('build') {
             steps {
