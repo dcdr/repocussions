@@ -7,11 +7,11 @@ node {
     //     checkout scm
     // }
     
-    // stage('Build one') {
-    //     docker.image('microsoft/aspnetcore-build:2.0') { c ->
-    //        sh 'dotnet build' 
-    //     }
-    // }
+    stage('Build one') {
+        docker.image('microsoft/aspnetcore-build:2.0') { c ->
+           sh 'dotnet build' 
+        }
+    }
     
     // stage('Test one') {
     //     docker.image('microsoft/aspnetcore-build:2.0') { c ->
