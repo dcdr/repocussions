@@ -8,8 +8,8 @@ node {
     // }
     
     stage('Build one') {
-        docker.image('microsoft/aspnetcore-build:2.0') { c ->
-           sh 'dotnet build' 
+        docker.image('microsoft/aspnetcore-build:2.0').inside() {
+           sh 'dotnet build'
         }
     }
     
