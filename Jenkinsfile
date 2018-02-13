@@ -6,6 +6,8 @@ node {
 
     //     checkout scm
     // }
+
+    sh 'pwd; find .'
     
     stage('Build one') {
         docker.image('microsoft/aspnetcore-build:2.0').inside() {
