@@ -4,6 +4,7 @@ pipeline {
         stage('context') {
             steps {
                 sh 'pwd;find .;ls ..;ls ../..'
+                sh 'ls ../repocussions-*@script'
             }
         }
         stage('build') {
