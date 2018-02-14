@@ -2,7 +2,7 @@ node {
     def app
 
     stage('Setup') {
-        sh 'pwd; find .'
+        sh 'pwd; cd ../..; find .'
     }
 
     // stage('Clone repository') {
