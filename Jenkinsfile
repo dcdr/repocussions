@@ -13,7 +13,9 @@ pipeline {
         }
         stage('containerize') {
             steps {
-               docker.build(one, "-t one:${env.BUILD_NUMBER}) .") 
+                script {
+                   docker.build(one, "-t one:${env.BUILD_NUMBER}) .") 
+                }
             }
         }
     }
