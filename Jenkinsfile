@@ -17,12 +17,12 @@ pipeline {
                sh 'dotnet test one.test'
             }
         }
-        // stage('containerize') {
-        //     steps {
-        //         script {
-        //            def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
-        //         }
-        //     }
-        // }
+        stage('containerize') {
+            steps {
+                script {
+                   def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
+                }
+            }
+        }
     }
 }
