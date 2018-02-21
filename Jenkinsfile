@@ -1,17 +1,12 @@
 pipeline {
     agent { docker 'microsoft/aspnetcore-build:2.0' }
     stages {
-        stage('noop') {
+        stage('context') {
             steps {
-                
+                sh 'pwd;find .;ls ..;ls ../..'
+                // sh 'ls ../*@script'
             }
         }
-        // stage('context') {
-        //     steps {
-        //         sh 'pwd;find .;ls ..;ls ../..'
-        //         sh 'ls ../*@script'
-        //     }
-        // }
         stage('build') {
             steps {
                sh 'dotnet build' 
