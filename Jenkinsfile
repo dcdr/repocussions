@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 script {
-                   def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
+                   def image = docker.build("one", "-t one:${env.BUILD_NUMBER} .") 
                 }
             }
         }
