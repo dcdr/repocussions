@@ -17,23 +17,23 @@ pipeline {
                sh 'dotnet test one.test'
             }
         }
-        stage('Example') {
-            steps {
-                echo 'Hello World'
+        // stage('Example') {
+        //     steps {
+        //         echo 'Hello World'
 
-                script {
-                    def browsers = ['chrome', 'firefox']
-                    for (int i = 0; i < browsers.size(); ++i) {
-                        echo "Testing the ${browsers[i]} browser"
-                    }
-                }
-            }
-        }
+        //         script {
+        //             def browsers = ['chrome', 'firefox']
+        //             for (int i = 0; i < browsers.size(); ++i) {
+        //                 echo "Testing the ${browsers[i]} browser"
+        //             }
+        //         }
+        //     }
+        // }
         stage('containerize') {
             steps {
                 sh 'pwd'
                 script {
-                //    def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
+                   def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
                 }
             }
         }
