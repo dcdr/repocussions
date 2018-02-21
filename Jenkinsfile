@@ -22,6 +22,7 @@ pipeline {
                 script {
                    def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
                 }
+                sh 'pwd'
             }
         }
     }
