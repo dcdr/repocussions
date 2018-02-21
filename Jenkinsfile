@@ -20,7 +20,7 @@ pipeline {
         stage('containerize') {
             steps {
                 script {
-                   def image = docker.build("-t one:${env.BUILD_NUMBER} one") 
+                   def image = docker.build("one:${env.BUILD_NUMBER}","one") 
                 }
             }
         }
