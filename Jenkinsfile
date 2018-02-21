@@ -19,10 +19,11 @@ pipeline {
         }
         stage('containerize') {
             steps {
+                sh 'pwd'
+                sh 'docker.build(one, "-t one:${env.BUILD_NUMBER} ."'
                 script {
                    def image = docker.build(one, "-t one:${env.BUILD_NUMBER} .") 
                 }
-                sh 'pwd'
             }
         }
     }
