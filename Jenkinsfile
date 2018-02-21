@@ -2,6 +2,9 @@ pipeline {
     agent { docker 'microsoft/aspnetcore-build:2.0' }
     stages {
         stage('noop') {
+            steps {
+                
+            }
         }
         // stage('context') {
         //     steps {
