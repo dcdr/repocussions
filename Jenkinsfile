@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('build') {
             agent { docker 'microsoft/aspnetcore-build:2.0' }
@@ -14,6 +14,7 @@ pipeline {
             }
         }
         stage('containerize') {
+            agent any
             steps {
                 script {
                    def image = docker.build("one:${env.BUILD_NUMBER}","one") 
