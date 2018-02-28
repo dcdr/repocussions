@@ -17,18 +17,14 @@ pipeline {
             agent any
             steps {
                 script {
-                   def service = docker.build("one:${env.BUILD_NUMBER}","one") 
+                   docker.build("one:${env.BUILD_NUMBER}","one") 
                 }
             }
         }
         stage('system test') {
-            agent any
+            agent { docker "one:${env.BUILD_NUMBER}" }
             steps {
-                script {
-                    service.inside("-p 80:80") {
-                        sh 'dotnet test one.st'
-                    }                    
-                }
+                sh 'dotnet test one.st'
             }
         }
     }
