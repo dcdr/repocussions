@@ -27,10 +27,10 @@ pipeline {
                 script {
                     docker.image("one:${env.BUILD_NUMBER}").withRun('-p 80:80') { c ->
                         docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:app") {
-                            curl http://localhost/api/values
-                            curl http://localhost:5000/api/values
-                            curl http://app/api/values
-                            curl http://app:5000/api/values
+                            sh 'curl http://localhost/api/values'
+                            sh 'curl http://localhost:5000/api/values'
+                            sh 'curl http://app/api/values'
+                            sh 'curl http://app:5000/api/values'
                             sh 'dotnet test one.st'
                         }
                     } 
