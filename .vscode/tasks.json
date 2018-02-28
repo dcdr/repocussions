@@ -1,15 +1,34 @@
 {
-    "version": "0.1.0",
-    "command": "dotnet",
-    "isShellCommand": true,
-    "args": [],
+    "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build",
+            "label": "build app",
+            "command": "dotnet",
+            "type": "process",
             "args": [
-                "${workspaceRoot}/one/one.csproj"
+                "build",
+                "${workspaceFolder}/one/one.csproj"
             ],
-            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build unit test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/one.ut/one.ut.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build system test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/one.st/one.st.csproj"
+            ],
             "problemMatcher": "$msCompile"
         }
     ]

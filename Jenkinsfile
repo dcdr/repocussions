@@ -7,17 +7,27 @@ pipeline {
                sh 'dotnet build' 
             }
         }
-        stage('test') {
+        stage('unit test') {
             agent { docker 'microsoft/aspnetcore-build:2.0' }
             steps {
-               sh 'dotnet test one.test'
+               sh 'dotnet test one.ut'
             }
         }
         stage('containerize') {
             agent any
             steps {
                 script {
-                   def image = docker.build("one:${env.BUILD_NUMBER}","one") 
+                   def service = docker.build("one:${env.BUILD_NUMBER}","one") 
+                }
+            }
+        }
+        stage('system test') {
+            agent any
+            steps {
+                script {
+                    service.inside() {
+                        sh 'dotnet test one.st'
+                    }                    
                 }
             }
         }
