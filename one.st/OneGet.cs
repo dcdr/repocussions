@@ -12,11 +12,16 @@ namespace One.SystemTests
         [Fact]
         public async Task ReturnsAll()
         {
+            var baseurl = Environment.GetEnvironmentVariable("baseurl");
+            if (String.IsNullOrWhiteSpace(baseurl)) 
+            {
+                baseurl = "http://localhost";
+            }
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.GetAsync("http://localhost/api/values");
+            HttpResponseMessage response = await client.GetAsync(baseurl + "/api/values");
             Assert.True(response.IsSuccessStatusCode, "Failed to call service.");
 
             string[] values = await response.Content.ReadAsAsync<string[]>();
