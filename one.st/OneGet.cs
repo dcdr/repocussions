@@ -17,11 +17,13 @@ namespace One.SystemTests
             {
                 baseurl = "http://localhost";
             }
+            Console.WriteLine("baseurl = " + baseurl);
             HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(baseurl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.GetAsync(baseurl + "/api/values");
+            HttpResponseMessage response = await client.GetAsync("/api/values");
             Assert.True(response.IsSuccessStatusCode, "Failed to call service.");
 
             string[] values = await response.Content.ReadAsAsync<string[]>();

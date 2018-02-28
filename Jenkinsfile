@@ -31,7 +31,7 @@ pipeline {
                             sh 'curl http://localhost:5000/api/values || echo not localhost:5000'
                             sh 'curl http://app/api/values || echo not app'
                             sh 'curl http://app:5000/api/values || echo not app:5000'
-                            sh 'dotnet test one.st -- baseulr=http://app'
+                            sh 'baseurl=http://app; dotnet test one.st'
                         }
                     } 
                 }
