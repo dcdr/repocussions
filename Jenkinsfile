@@ -26,9 +26,9 @@ pipeline {
             steps {
                 script {
                     docker.image("one:${env.BUILD_NUMBER}").withRun('-p 80:80') { c ->
-                        docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:app") {
-                            sh 'baseurl=http://app; curl ${baseurl}/api/values || echo not localhost'
-                            sh 'baseurl=http://app; dotnet test one.st'
+                        docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:app -e baseurl=http://app") {
+                            sh 'curl ${baseurl}/api/values || echo not localhost'
+                            sh 'dotnet test one.st'
                         }
                     } 
                 }
