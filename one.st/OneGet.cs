@@ -16,7 +16,7 @@ namespace One.SystemTests
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5000/api/values");
+            HttpResponseMessage response = await client.GetAsync("http://localhost/api/values");
             Assert.True(response.IsSuccessStatusCode, "Failed to call service.");
 
             string[] values = await response.Content.ReadAsAsync<string[]>();
