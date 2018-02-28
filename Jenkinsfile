@@ -25,7 +25,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    docker.image("one:${env.BUILD_NUMBER}").runWith('-p 80:80') { c ->
+                    docker.image("one:${env.BUILD_NUMBER}").withRun('-p 80:80') { c ->
                         docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:app") {
                             sh 'dotnet test one.st'
                         }
