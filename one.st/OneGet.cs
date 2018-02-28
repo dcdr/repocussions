@@ -12,6 +12,9 @@ namespace One.SystemTests
         [Fact]
         public async Task ReturnsAll()
         {
+            Console.WriteLine(Environment.GetEnvironmentVariables());
+            Console.WriteLine(Environment.GetEnvironmentVariables().Keys);
+            Console.WriteLine(Environment.GetEnvironmentVariables().Values);
             var baseurl = Environment.GetEnvironmentVariable("baseurl");
             if (String.IsNullOrWhiteSpace(baseurl)) 
             {
