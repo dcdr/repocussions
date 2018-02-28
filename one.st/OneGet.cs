@@ -12,15 +12,11 @@ namespace One.SystemTests
         [Fact]
         public async Task ReturnsAll()
         {
-            Console.WriteLine(Environment.GetEnvironmentVariables());
-            Console.WriteLine(Environment.GetEnvironmentVariables().Keys);
-            Console.WriteLine(Environment.GetEnvironmentVariables().Values);
             var baseurl = Environment.GetEnvironmentVariable("baseurl");
             if (String.IsNullOrWhiteSpace(baseurl)) 
             {
                 baseurl = "http://localhost";
             }
-            Console.WriteLine("baseurl = " + baseurl);
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(baseurl);
             client.DefaultRequestHeaders.Accept.Clear();
@@ -30,8 +26,6 @@ namespace One.SystemTests
             Assert.True(response.IsSuccessStatusCode, "Failed to call service.");
 
             string[] values = await response.Content.ReadAsAsync<string[]>();
-            Assert.NotNull(values);
-            Assert.NotEmpty(values);
             Assert.Equal(new string[] {"value1", "value2"}, values);
         }
     }

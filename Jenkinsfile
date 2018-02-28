@@ -25,11 +25,11 @@ pipeline {
             agent any
             steps {
                 script {
+                    def tmphostname = app
                     docker.image("one:${env.BUILD_NUMBER}").withRun('-p 80:80') { c ->
-                        docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:app -e baseurl=http://app") {
-                            sh 'curl ${baseurl}/api/values || echo not localhost'
+                        docker.image('microsoft/aspnetcore-build:2.0').inside("--link ${c.id}:${tmphostname} -e baseurl=http://${tmphostname}") {
                             sh 'dotnet test one.st'
-                        }
+                        }   
                     } 
                 }
             }
