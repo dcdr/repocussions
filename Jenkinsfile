@@ -25,7 +25,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    service.inside() {
+                    service.inside("-p 80:80") {
                         sh 'dotnet test one.st'
                     }                    
                 }
