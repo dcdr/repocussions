@@ -13,6 +13,7 @@ phases:
       - dotnet build one
       - pwd
       - ls
+      - ls one
       - ls one/out
       - find one
   post_build:
