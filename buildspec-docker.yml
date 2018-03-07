@@ -10,10 +10,7 @@ phases:
   build:
     commands:
       - echo Entered the build phase
-      - dotnet build one
+      - docker build -t `date "+%Y-%m-%d_%H-%M-%S"` one
   post_build:
     commands:
       - echo Entered the post_build phase
-      - echo Run unit tests
-      - dotnet build one.ut
-      - dotnet test one.ut
