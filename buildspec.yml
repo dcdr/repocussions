@@ -3,10 +3,10 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Entered the install phase
+      - echo Nothing to do in the install phase
   pre_build:
     commands:
-      - echo Entered the pre_build phase
+      - echo Nothing to do in the pre_build phase
   build:
     commands:
       - echo Entered the build phase
@@ -17,3 +17,8 @@ phases:
       - echo Run unit tests
       - dotnet build one.ut
       - dotnet test one.ut
+
+artifacts:
+  files:
+    - 'one/out/**/*''
+  discard-paths: yes

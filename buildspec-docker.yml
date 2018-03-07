@@ -3,14 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Entered the install phase
+      - echo Nothing to do in the install phase
   pre_build:
     commands:
-      - echo Entered the pre_build phase
+      - echo Nothing to do in the pre_build phase
   build:
     commands:
       - echo Entered the build phase
       - docker build -t `date "+%Y-%m-%d_%H-%M-%S"` one
   post_build:
     commands:
-      - echo Entered the post_build phase
+      - echo Nothing to do in the post_build phase
