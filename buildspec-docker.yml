@@ -1,9 +1,4 @@
 version: 0.2
-env:
-  AWS_DEFAULT_REGION: us-west-1
-  AWS_ACCOUNT_ID: 358199490937
-  IMAGE_REPO_NAME: one
-  IMAGE_TAG: latest
 phases:
   install:
     commands:
