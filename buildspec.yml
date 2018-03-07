@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase
+  build:
+    commands:
+      - echo Entered the build phase
+      - dotnet build one
+  post_build:
+    commands:
+      - echo Entered the post_build phase
+      - echo Run unit tests
+      - dotnet build one.ut
+      - dotnet test one.ut
+      - echo Containerize
+      - docker build -t `date "+%Y-%m-%d_%H-%M-%S"` one
