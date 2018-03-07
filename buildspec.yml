@@ -11,13 +11,14 @@ phases:
     commands:
       - echo Entered the build phase
       - dotnet build one
+      - ls one/out
+      - find one
   post_build:
     commands:
       - echo Entered the post_build phase
       - echo Run unit tests
       - dotnet build one.ut
       - dotnet test one.ut
-
 artifacts:
   files:
     - 'one/out/**/*'
