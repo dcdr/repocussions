@@ -11,6 +11,8 @@ phases:
     commands:
       - echo Entered the build phase
       - dotnet build one
+      - pwd
+      - ls
       - ls one/out
       - find one
   post_build:
